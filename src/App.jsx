@@ -1,11 +1,20 @@
+import { Suspense } from 'react';
 import './App.css'
+import Countries from './components/Countries';
+
+
+const countriesPromise = fetch('https://openapi.programming-hero.com/api/all').then(res => res.json());
 
 function App() {
 
   return (
-    <button className='btn btn-primary'>click me</button>
+    <>
+      <Suspense fallback={<h3>helllo there....</h3>}>
+        <Countries countriesPromise={countriesPromise} />
+      </Suspense>
+    </>
   )
-     
+
 }
 
 export default App
