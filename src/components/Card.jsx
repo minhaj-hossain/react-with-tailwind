@@ -77,7 +77,7 @@ const Card = ({ country }) => {
                 </div>
 
                 <div className="card-actions mt-4 ">
-                    <button onClick={eventHandler} className="btn btn-primary btn-block btn-sm"> {state ? "Learn More": "nothing to learn"}</button>
+                    <button onClick={eventHandler} className={`btn btn-soft ${state ? 'btn-primary ' : 'btn-secondary'} btn-block`}> {state ? "Visited": "Not Visited"}</button>
                 </div>
 
             </div>
