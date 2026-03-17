@@ -1,35 +1,33 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Card = ({ country }) => {
+const Card = ({ country, handleVisitedCountries }) => {
 
-    // 1. Basic Info
     const name = country.name?.common || "Unknown";
-    // const ccn3 = country.ccn3?.ccn3;
     const region = country.region?.region;
     const area = country.area?.area;
+
     const population = country.population?.population;
     const continent = country.continents?.continents?.[0];
 
-    // 2. Fix the typo: 'flags' instead of 'glags'
     const flagImg = country.flags?.flags?.png;
     const flagAlt = country.flags?.flags?.alt;
 
-    // 3. Fix Language: Get the first language available (not just 'eng')
-    // const langKeys = Object.keys(country.languages?.languages || {});
-    // const language = country.languages?.languages[langKeys[0]] || "N/A";
-
-    // 4. Fix Currency: Get the first currency available (don't hardcode JMD)
     const currKeys = Object.keys(country.currencies?.currencies || {});
     const currencyName = country.currencies?.currencies[currKeys[0]]?.name || "N/A";
 
-    // console.log(name, ccn3, language, currencyName);
-
-    const [state, setState] = useState(true);
+    const [visited, setVisited] = useState(false)
 
     const eventHandler = () => {
-        setState(!state)
+
+        setVisited(!visited)
+        handleVisitedCountries(country)
     }
+
+
+
+
+    //    emni();
 
     return (
         <div className="card h-full flex flex-col justify-between w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-base-200">
@@ -77,7 +75,7 @@ const Card = ({ country }) => {
                 </div>
 
                 <div className="card-actions mt-4 ">
-                    <button onClick={eventHandler} className={`btn btn-soft ${state ? 'btn-primary ' : 'btn-secondary'} btn-block`}> {state ? "Visited": "Not Visited"}</button>
+                    <button onClick={eventHandler} className={`btn btn-soft ${visited ? ' btn-secondary' : 'btn-primary'} btn-block`}> {visited ? "Visited" : "Not Visited"}</button>
                 </div>
 
             </div>
