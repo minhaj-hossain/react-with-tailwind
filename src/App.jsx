@@ -17,6 +17,8 @@ function App() {
     if (!visitedCountries.includes(name)) {
       setVisitedCountries(prevCountry => [...prevCountry, name])
 
+    } else {
+      setVisitedCountries(prevCountry => prevCountry.filter(c => c !== name))
     }
   }
   // console.log(visitedCountries)
