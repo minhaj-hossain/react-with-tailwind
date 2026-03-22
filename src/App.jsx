@@ -21,7 +21,6 @@ function App() {
       setVisitedCountries(prevCountry => prevCountry.filter(c => c !== name))
     }
   }
-  // console.log(visitedCountries)
 
   return (
     <>
